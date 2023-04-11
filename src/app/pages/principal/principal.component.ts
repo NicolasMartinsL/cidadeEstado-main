@@ -9,12 +9,13 @@ import { Cidade } from "src/app/model/cidade";
   styleUrls: ['./principal.component.scss']
 })
 export class PrincipalComponent {
-
+  
   estadoPai: Estado = new Estado();
   cidadePai: Cidade = new Cidade();
   estadoMae: Estado = new Estado();
   cidadeMae: Cidade = new Cidade();
-
+  
+  
   constructor() {
     this.estadoPai.id = 31;
     this.estadoPai.sigla = 'MG';
@@ -32,6 +33,5 @@ export class PrincipalComponent {
     //this.cidadeMae.nome = 'Benjamin Constant';
     //this.cidadeMae.uf = this.estadoMae.id;
   }
-
 
 }

@@ -18,11 +18,14 @@ export class CidadeEstadoComponent implements OnInit {
 
   @Input()
   estado: Estado = new Estado();
+
   @Output() estadoChange: EventEmitter<Estado> = new EventEmitter<Estado>();
 
   @Input()
-  cidade: Cidade = new Cidade();
+  cidade?: Cidade = new Cidade();
+
   @Output() cidadeChange: EventEmitter<Cidade> = new EventEmitter<Cidade>();
+
 
   constructor(private service: IbgeService) {
   }
@@ -30,19 +33,18 @@ export class CidadeEstadoComponent implements OnInit {
   selecionarEstado(e: any) {
     this.estadoChange.emit(e.value);
     this.service.listaCidades(String(e.value.id)).subscribe(dados => {
-      this.cidades = dados;
-      if(this.cidade && this.cidade.id === e.value.id){
-        this.cidades = dados;
-      }
+    this.cidades = dados;
+    this.cidade = new Cidade();
     });
   }
   selecionarCidade(e: any) {
-    this.cidadeChange.emit(e.value);
-    console.log(e);
-    console.log(e.value);
-    let a = new Cidade(e.value)
-    this.cidade = a;
-  
+    if (e.value) {
+      this.cidadeChange.emit(e.value);
+      this.cidade = new Cidade(e.value);
+    } else {
+      this.cidade = new Cidade();
+    }
+    
   }
   ngOnInit() {
     this.service.listaEstados().subscribe(dados => {
@@ -52,12 +54,12 @@ export class CidadeEstadoComponent implements OnInit {
         this.estados.push(e);
 
         if(this.estado && this.estado.id === e.id){
-          console.log(e);
           this.estado = e;
         }
       }
     });
   }
+  
 /*
   getDisplayEstado(e:any){
     if(e){
@@ -65,6 +67,7 @@ export class CidadeEstadoComponent implements OnInit {
     }
   }
  */
+  
 }
 
 
