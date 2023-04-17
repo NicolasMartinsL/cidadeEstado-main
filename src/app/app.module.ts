@@ -6,7 +6,7 @@ import {AppInfoService, AuthService, ScreenService} from "./shared/services";
 import {ChangePasswordFormModule, CidadeEstadoModule, CreateAccountFormModule, FooterModule, LoginFormModule, ResetPasswordFormModule} from "./shared/components";
 import {UnauthenticatedContentModule} from "./unauthenticated-content";
 import {DxDataGridModule, DxSelectBoxModule} from "devextreme-angular";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 
 

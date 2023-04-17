@@ -7,9 +7,20 @@ import {DxFormModule} from "devextreme-angular/ui/form";
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {NgModule} from "@angular/core";
 import {AuthGuardService} from "./shared/services";
-import {DxDataGridModule} from "devextreme-angular";
+import {
+    DxDataGridModule,
+    DxListModule,
+    DxScrollViewModule,
+    DxTextAreaModule,
+    DxTextBoxModule
+} from "devextreme-angular";
 import {PrincipalComponent} from "./pages/principal/principal.component";
 import {CidadeEstadoModule} from "./shared/components/cidadeestado/cidade-estado.component";
+import {CadClienteComponent} from "./pages/CadastroCliente/cadCliente.component";
+import {CadProdutoComponent} from "./pages/CadastroProduto/cadProduto.component";
+import {CadNotaFiscalComponent} from "./pages/CadastroNotaFiscal/cadNotaFiscal.component";
+
+
 
 
 const routes: Routes = [
@@ -18,14 +29,16 @@ const routes: Routes = [
     component: PrincipalComponent,
   },
   {
-    path: 'tasks',
-    component: TasksComponent,
-    canActivate: [ AuthGuardService ]
+    path: 'CadastroNotaFiscal',
+    component: CadNotaFiscalComponent,
   },
   {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [ AuthGuardService ]
+    path: 'CadastroProdutos',
+    component: CadProdutoComponent,
+  },
+  {
+    path: 'CadastroCliente',
+    component: CadClienteComponent,
   },
   {
     path: 'home',
@@ -59,19 +72,22 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true}),
-    DxDataGridModule,
-    DxFormModule,
-    DxButtonModule,
-    CidadeEstadoModule
-  ],
+    imports: [RouterModule.forRoot(routes, {useHash: true}),
+        DxDataGridModule,
+        DxFormModule,
+        DxButtonModule,
+        CidadeEstadoModule, DxScrollViewModule, DxTextBoxModule, DxTextAreaModule, DxListModule
+    ],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
     HomeComponent,
     ProfileComponent,
     TasksComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    CadClienteComponent,
+    CadNotaFiscalComponent,
+    CadProdutoComponent
   ]
 })
 export class AppRoutingModule { }

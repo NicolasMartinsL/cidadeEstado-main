@@ -10,16 +10,20 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Examples',
+    text: 'Cadastos',
     icon: 'folder',
     items: [
       {
-        text: 'Profile',
-        path: '/profile'
+        text: 'Clientes',
+        path: '/CadastroCliente'
       },
       {
-        text: 'Tasks',
-        path: '/tasks'
+        text: 'Notas Fiscais',
+        path: '/CadastroNotaFiscal'
+      },
+      {
+        text: 'Produtos',
+        path: '/CadastroProdutos'
       }
     ]
   }
